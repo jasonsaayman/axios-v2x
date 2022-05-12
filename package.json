@@ -2,8 +2,9 @@
   "name": "axios",
   "version": "0.27.2",
   "description": "Promise based HTTP client for the browser and node.js",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "author": "Matt Zabriskie",
+  "license": "MIT",
+  "homepage": "https://axios-http.com",
   "scripts": {
     "test": "grunt test && dtslint",
     "start": "node ./sandbox/server.js",
@@ -17,6 +18,9 @@
     "type": "git",
     "url": "https://github.com/axios/axios.git"
   },
+  "bugs": {
+    "url": "https://github.com/axios/axios/issues"
+  },
   "keywords": [
     "xhr",
     "http",
@@ -24,12 +28,19 @@
     "promise",
     "node"
   ],
-  "author": "Matt Zabriskie",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/axios/axios/issues"
+  "main": "index.js",
+  "types": "index.d.ts",
+  "browser": {
+    "./lib/adapters/http.js": "./lib/adapters/xhr.js",
+    "./lib/defaults/env/FormData.js": "./lib/helpers/null.js"
   },
-  "homepage": "https://axios-http.com",
+  "jsdelivr": "dist/axios.min.js",
+  "unpkg": "dist/axios.min.js",
+  "dependencies": {
+    "follow-redirects": "^1.15.0",
+    "form-data": "^4.0.0",
+    "proxy-from-env": "^1.1.0"
+  },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^15.1.0",
@@ -76,18 +87,6 @@
     "url-search-params": "^0.10.0",
     "webpack": "^4.44.2",
     "webpack-dev-server": "^3.11.0"
-  },
-  "browser": {
-    "./lib/adapters/http.js": "./lib/adapters/xhr.js",
-    "./lib/defaults/env/FormData.js": "./lib/helpers/null.js"
-  },
-  "jsdelivr": "dist/axios.min.js",
-  "unpkg": "dist/axios.min.js",
-  "typings": "./index.d.ts",
-  "dependencies": {
-    "follow-redirects": "^1.15.0",
-    "form-data": "^4.0.0",
-    "proxy-from-env": "^1.1.0"
   },
   "bundlesize": [
     {
