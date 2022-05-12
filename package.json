@@ -37,7 +37,12 @@
     }
   ],
   "xo": {
-    "space": 2
+    "space": 2,
+    "ignores": [
+      "_*",
+      "**/node_modules/**",
+      "*.config.js"
+    ]
   },
   "scripts": {
     "test": "xo && jest"
