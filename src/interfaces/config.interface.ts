@@ -1,10 +1,5 @@
 import { HttpVerbs } from '../enums/verbs.enum';
-
-type RequestTransformerType = {
-  (data: any, headers: AxiosRequestHeaders): any;
-};
-
-type AxiosRequestHeaders = Record<string, string | number | boolean>;
+import { RequestTransformerType } from '../types/transform/request.type';
 
 export interface Config {
   url?: string,
