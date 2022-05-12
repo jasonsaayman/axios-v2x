@@ -5,8 +5,9 @@
   "author": "Matt Zabriskie",
   "license": "MIT",
   "homepage": "https://axios-http.com",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.js",
   "browser": {
     "./lib/adapters/http.js": "./lib/adapters/xhr.js",
     "./lib/defaults/env/FormData.js": "./lib/helpers/null.js"
@@ -22,6 +23,25 @@
   },
   "bugs": {
     "url": "https://github.com/axios/axios/issues"
+  },
+  "scripts": {
+    "test": "xo && jest",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "tsc -p configs/cjs.tsconfig.json",
+    "build:esm": "tsc -p configs/esm.tsconfig.json",
+    "build:types": "tsc -p configs/types.tsconfig.json"
+  },
+  "dependencies": {
+    "follow-redirects": "^1.15.0",
+    "form-data": "^4.0.0",
+    "proxy-from-env": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.2",
+    "typescript": "^4.6.4",
+    "xo": "^0.48.0"
   },
   "keywords": [
     "xhr",
@@ -42,21 +62,13 @@
       "_*",
       "**/node_modules/**",
       "*.config.js"
-    ]
-  },
-  "scripts": {
-    "test": "xo && jest"
-  },
-  "dependencies": {
-    "follow-redirects": "^1.15.0",
-    "form-data": "^4.0.0",
-    "proxy-from-env": "^1.1.0"
-  },
-  "devDependencies": {
-    "@types/jest": "^27.5.1",
-    "jest": "^28.1.0",
-    "ts-jest": "^28.0.2",
-    "typescript": "^4.6.4",
-    "xo": "^0.48.0"
+    ],
+    "rules": {
+      "import/extensions": "off",
+      "@typescript-eslint/object-curly-spacing": [
+        "error",
+        "always"
+      ]
+    }
   }
 }
